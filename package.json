@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0"
+  }
+}

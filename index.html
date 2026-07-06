@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="G's Famous Pizza (Guallpa's) — Iselin, NJ. Family-owned since 1999. 10-inch personal pan pizzas, halal chicken pies, wings & fries. Buy 2 pizzas with any toppings, get 1 plain free.">
+    <meta name="theme-color" content="#2B0A06">
+    <title>G's Famous Pizza | Guallpa's — Iselin, NJ</title>
+    <link rel="icon" type="image/jpeg" href="assets/logo-roundel.jpg">
+    <link rel="apple-touch-icon" href="assets/logo-roundel.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="G's Famous Pizza | Guallpa's — Iselin, NJ">
+    <meta property="og:description" content="You've tried the rest. Now try the best. Family-owned since 1999 — buy 2 pizzas with any toppings, get 1 plain free.">
+    <meta property="og:image" content="assets/storefront-day.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Guallpa's Famous Pizza home">
+        <span class="brand-mark"><img src="assets/logo-roundel.jpg" alt=""></span>
+        <span class="brand-name" data-slot="brand.name">G's Famous Pizza</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#menu">Menu</a>
+        <a href="#shop">The shop</a>
+        <a href="#proof">Reviews</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <button class="nav-order" type="button" data-scroll-order>Start order</button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-content reveal">
+            <img class="hero-logo" data-slot="brand.logoLockup" src="assets/logo-lockup.jpg" alt="Logo">
+            <p class="eyebrow" data-slot="hero.eyebrow">Oak Tree Road · Iselin, NJ · Since 1999</p>
+            <h1 id="hero-title">You've tried the rest.<br><em>Now try the best.</em></h1>
+            <p class="hero-copy" data-slot="hero.copy"></p>
+            <div class="hero-actions">
+              <button class="button primary" type="button" data-scroll-order>Start my order</button>
+              <a class="button secondary" href="#menu">See the menu</a>
+            </div>
+            <p class="hero-facts"><span>4.2★ on Grubhub</span><span>Top 3 Pizza Spot · BusinessRate 2026</span></p>
+          </div>
+          <figure class="hero-stage reveal" data-hero-stage>
+            <img class="stage-fallback" data-slot="hero.poster" src="assets/promo-worldcup.jpg" alt="Featured poster">
+            <canvas id="hero-scene" aria-label="Watch-party poster"></canvas>
+            <figcaption class="stage-caption" data-slot="hero.posterCaption"></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track"></div>
+      </div>
+
+      <section class="section menu-section" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-slot="headings.menu.eyebrow"></p>
+          <h2 id="menu-title" data-slot="headings.menu.title"></h2>
+          <p data-slot="headings.menu.copy"></p>
+        </div>
+        <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories" data-category-tabs></div>
+        <div class="menu-grid" data-menu-grid></div>
+      </section>
+
+      <section class="section order-section" aria-labelledby="checkout-title">
+        <div class="cart-panel reveal" data-cart-panel>
+          <div class="panel-heading">
+            <p class="eyebrow">Your cart</p>
+            <h2>Your order</h2>
+          </div>
+          <div class="cart-empty" data-cart-empty>Your cart is ready for its first pie.</div>
+          <div class="cart-list" data-cart-list></div>
+          <div class="cart-total" data-cart-total hidden></div>
+          <button class="button primary full" type="button" data-open-checkout>Checkout</button>
+        </div>
+
+        <form class="checkout-panel reveal" id="checkout" aria-labelledby="checkout-title" data-checkout-form>
+          <div class="panel-heading">
+            <p class="eyebrow">Checkout</p>
+            <h2 id="checkout-title">Schedule the handoff.</h2>
+          </div>
+          <div class="segmented" aria-label="Order type">
+            <button class="is-active" type="button" data-order-type="pickup">Pickup</button>
+            <button type="button" data-order-type="delivery">Delivery</button>
+          </div>
+          <label>Name <input name="customerName" autocomplete="name"></label>
+          <label>Phone <input name="phone" autocomplete="tel"></label>
+          <label class="delivery-field" hidden>Delivery address <input name="address" autocomplete="street-address"></label>
+          <label>Time
+            <select name="scheduledTime">
+              <option>ASAP - 18 to 24 min</option>
+              <option>30 minutes</option>
+              <option>45 minutes</option>
+              <option>Tonight at 7:00</option>
+            </select>
+          </label>
+          <p class="form-error" role="alert" data-form-error></p>
+          <button class="button primary full" type="submit" data-place-order>Place order</button>
+          <p class="checkout-alt">Prefer delivery apps? <a data-slot="links.grubhub" href="#" target="_blank" rel="noopener">Order on Grubhub</a> or call <a data-slot-phone href="#"><span data-slot="contact.phone"></span></a>.</p>
+        </form>
+      </section>
+
+      <section class="section gallery-section" id="shop" aria-labelledby="gallery-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-slot="headings.gallery.eyebrow"></p>
+          <h2 id="gallery-title" data-slot="headings.gallery.title"></h2>
+          <p data-slot="headings.gallery.copy"></p>
+        </div>
+        <div class="gallery-grid"></div>
+      </section>
+
+      <section class="section proof-section" id="proof" aria-labelledby="proof-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-slot="headings.proof.eyebrow"></p>
+          <h2 id="proof-title" data-slot="headings.proof.title"></h2>
+          <p data-slot="headings.proof.copy"></p>
+        </div>
+        <div class="proof-grid"></div>
+      </section>
+
+      <section class="visit-band" id="visit" aria-labelledby="visit-title">
+        <div class="visit-copy reveal">
+          <p class="eyebrow" data-slot="visit.eyebrow"></p>
+          <h2 id="visit-title" data-slot="visit.title"></h2>
+          <p class="visit-detail"><strong data-slot="contact.address"></strong></p>
+          <p class="visit-detail"><a data-slot="contact.phoneHref" href="#"><strong data-slot="contact.phone"></strong></a> · <span data-slot="contact.orderLine"></span></p>
+          <p class="visit-note" data-slot="visit.note"></p>
+          <button class="button primary" type="button" data-scroll-order>Start another order</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img data-slot="brand.logoRoundel" src="assets/logo-roundel.jpg" alt="Mascot logo">
+          <div>
+            <strong data-slot="brand.name"></strong>
+            <span data-slot="brand.sub"></span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <strong>Visit</strong>
+          <span data-slot="contact.address"></span>
+          <a data-slot-phone href="#"><span data-slot="contact.phone"></span></a>
+          <span data-slot="contact.hoursLine"></span>
+        </div>
+        <div class="footer-col">
+          <strong>Order &amp; follow</strong>
+          <a data-slot="links.grubhub" href="#" target="_blank" rel="noopener">Grubhub</a>
+          <a data-slot="links.facebook" href="#" target="_blank" rel="noopener">Facebook</a>
+          <a data-slot="links.instagram" href="#" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="item-dialog" data-item-dialog aria-labelledby="dialog-title">
+      <form method="dialog" class="dialog-card">
+        <button class="icon-button close" value="close" aria-label="Close customizer">×</button>
+        <div data-dialog-content></div>
+      </form>
+    </dialog>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+    <script src="site.config.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="hero3d.js"></script>
+  </body>
+</html>
