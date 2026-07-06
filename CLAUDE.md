@@ -261,7 +261,10 @@ gh api repos/<owner>/<client-slug>/pages -X POST -f "source[branch]=master" -f "
   returns 200, enable enforcement: PUT `{"https_enforced":true}`. Domain changes are
   sensitive — confirm with the human before touching any domain you didn't create.
 
-## 11. Known pitfalls (all hit while building Guallpa's)
+## 11. Known pitfalls (all hit while building real clients)
+
+- The default menu tab is `SITE.menu.categories[0].id` — never hardcode a category id
+  in script.js; category ids differ per client.
 
 - `site.config.js` declares `const SITE` globally — **never** re-declare `SITE` in
   another classic script; you'll get "Identifier 'SITE' has already been declared"

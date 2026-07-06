@@ -2,7 +2,7 @@ const categories = SITE.menu.categories;
 const menuItems = SITE.menu.items;
 
 const state = {
-  category: 'pan',
+  category: SITE.menu.categories[0].id,
   cart: [],
   orderType: 'pickup',
   activeItem: null
