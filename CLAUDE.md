@@ -280,6 +280,9 @@ gh api repos/<owner>/<client-slug>/pages -X POST -f "source[branch]=master" -f "
 - `sips` warns "Output file suffix should be png" on jpg crops — harmless.
 - The Pages build can report `errored` a few times before flipping to `built` —
   poll, don't panic.
+- Broken-image QA checks must scroll the page first: gallery images are
+  `loading="lazy"` and below-fold ones report `naturalWidth 0` without being
+  broken. Either scroll through before counting, or verify flagged URLs with curl.
 - Order relay: FormSubmit AJAX endpoint per email. Unactivated inboxes queue an
   activation email on first POST; nothing is delivered until it's clicked.
 
