@@ -6,6 +6,10 @@ Static files only — deploys free on GitHub Pages. Ships configured as **G's Fa
 Pizza (Guallpa's), Iselin NJ** as a working reference; every client-specific value
 lives in **`site.config.js`** — that is the only file you edit per client.
 
+> **Working with Claude?** Point it at [CLAUDE.md](CLAUDE.md) — a complete agent
+> runbook covering what is Guallpa reference content vs. template, the photo/menu
+> research techniques, the honesty rules, theming, and the full deploy pipeline.
+
 ## New client, step by step
 
 ### 1. Research (30–60 min)
