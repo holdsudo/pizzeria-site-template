@@ -92,6 +92,17 @@ If the client is on Grubhub (check with a web search `"<name>" <town> grubhub`):
    response. Scroll the page (and click category nav entries) to trigger every feed.
 4. The JSON-LD block on the page has the Grubhub **rating and review count** — use it
    for the hero fact chips only if it's decent (Guallpa's: "4.2★ on Grubhub").
+5. **Per-item photos — check `media_images` on every item entity.** Restaurants
+   upload real photos of specific menu items to Grubhub, and those are the single
+   best menu-card source: real food, already matched to the item by the owner.
+   Build the URL as `base_url + public_id + '.' + format` (full size, no transform
+   params needed) and download with a browser UA. Metro Pizzeria had 11 of 24 items
+   photographed this way — that beat everything found on GBP and socials combined.
+   Still apply the honesty rule to each one: **view every photo** and check it
+   against the item name. A duplicated `public_id` across two different items means
+   the restaurant mislabeled one — give the photo to the item it visually matches
+   and tile the other (Metro had the buffalo-chicken photo also attached to Chicken
+   Tikka). Guallpa's had zero item photos, so expect either case.
 Slice (`slicelife.com`) pages are server-rendered and easier if they use Slice instead.
 No online menu at all → ask the human for a menu photo and transcribe it.
 
@@ -124,7 +135,7 @@ paths in config, but consistency keeps repos uniform):
 | `storefront-wide.jpg` | visit band background | Wide storefront/exterior; text overlays the left third, so the subject should read on the right. |
 | `kitchen.jpg`, `interior-guests.jpg` | gallery | Real interior shots. |
 | `poster-round32.jpg` → rename | gallery | One culture/promo poster tile. |
-| `food-*.jpg` | menu cards | Real food close-ups, cropped to the single item (section 4). |
+| `food-*.jpg` / `gh-*.jpg` | menu cards | Real food close-ups matched to the item. **Check Grubhub `media_images` first** (section 2d.5) — owner-uploaded per-item photos beat everything else. GBP/social crops fill the gaps. |
 
 Crop with `sips` on macOS: `sips -c <height> <width> --cropOffset <y> <x> in.jpg --out out.jpg`.
 Always **view every crop** after making it.
