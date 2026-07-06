@@ -61,7 +61,7 @@ const SITE = {
     orderPrefix: "GFP"
   },
   headings: {
-    menu: { eyebrow: "The real menu", title: "The pans.", copy: "Forty pies and sides, exactly as they sell them \u2014 10\" personal pans, specialty pies, 16\" large pans, wings, and fries. Buy 2 with any toppings, get 1 plain free." },
+  menu: { eyebrow: "The real menu", title: "The pans.", copy: "Forty pies and sides, exactly as they sell them \u2014 10\" personal pans, specialty pies, 16\" large pans, wings, and fries. Buy 2 with any toppings, get 1 plain free." },
     gallery: { eyebrow: "Straight from the shop", title: "Inside the famous.", copy: "The counter, the deck ovens, the booths, and the watch-party wall \u2014 this is the real Oak Tree Road original." },
     proof: { eyebrow: "Find us everywhere", title: "Follow the shop. Read the reviews.", copy: "Rated 4.2\u2605 on Grubhub \u2014 and the watch parties, deals, and fresh pies land on Facebook and Instagram first." }
   },
@@ -77,6 +77,18 @@ const SITE = {
     title: "Pull up to Oak Tree Road.",
     photo: "assets/storefront-wide.jpg",
     note: "Open 7 days a week. Call ahead for faster service."
+  },
+  reviews: {
+    eyebrow: "Reviews from Yelp",
+    title: "The neighborhood has receipts.",
+    copy: "Thirty-five Yelp reviews deep \u2014 here's what Iselin says about the pies.",
+    source: "Yelp",
+    sourceUrl: "https://www.yelp.com/biz/guallpas-famous-pizza-iselin",
+    items: [
+      { stars: 5, date: "Sep 2023", text: "The service is always friendly and prompt. Their personal pizzas are consistently fresh and delicious\u2026 The \u201cbuy 2, get 1 plain\u201d offer is a steal." },
+      { stars: 4, date: "Mar 2019", text: "Amazing lil pizzas for a great price!!! Personal-sized pizzas with personalized toppings. Buy 2, get a 3rd cheese pizza free." },
+      { stars: 5, date: "May 2017", text: "Even my grandmothers loved the pizza here and they don't even eat pizza. But after a few bites, they managed to polish half a pie which is huge for grandparents." }
+    ]
   },
   menu: {
     categories: [

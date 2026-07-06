@@ -58,6 +58,25 @@ function fillSlots() {
   document.querySelectorAll('[data-slot-phone]').forEach((el) => { el.href = SITE.contact.phoneHref; });
   document.querySelector('.brand-mark img').src = SITE.brand.logoRoundel;
 
+  const reviewsSection = document.querySelector('[data-reviews-section]');
+  if (reviewsSection && SITE.reviews && SITE.reviews.items && SITE.reviews.items.length) {
+    reviewsSection.hidden = false;
+    const grid = reviewsSection.querySelector('.reviews-grid');
+    grid.innerHTML = SITE.reviews.items.map(() => `
+      <blockquote class="review-card reveal is-visible"><div class="review-stars" aria-hidden="true"></div><p></p><footer><span></span><a target="_blank" rel="noopener"></a></footer></blockquote>
+    `).join('');
+    [...grid.children].forEach((card, i) => {
+      const r = SITE.reviews.items[i];
+      card.querySelector('.review-stars').textContent = '\u2605'.repeat(r.stars) + '\u2606'.repeat(5 - r.stars);
+      card.querySelector('.review-stars').setAttribute('aria-label', `${r.stars} out of 5 stars`);
+      card.querySelector('p').textContent = `\u201c${r.text}\u201d`;
+      card.querySelector('footer span').textContent = `${r.author || SITE.reviews.source + ' reviewer'} \u00b7 ${r.date}`;
+      const link = card.querySelector('footer a');
+      link.href = SITE.reviews.sourceUrl;
+      link.textContent = `Read on ${SITE.reviews.source}`;
+    });
+  }
+
   const band = document.querySelector('.visit-band');
   if (band) band.style.backgroundImage = `linear-gradient(90deg, rgba(22,8,5,.93) 0 34%, rgba(22,8,5,.55) 62%, rgba(43,10,6,.35)), url('${SITE.visit.photo}')`;
 
