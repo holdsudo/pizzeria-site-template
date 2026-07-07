@@ -1,6 +1,6 @@
 # CLAUDE.md — How to build a client site from this template
 
-You (Claude) are looking at a **pizzeria website template**. It ships fully configured
+You (Claude) are looking at a **local-business website template** (built first for pizzerias, now also salons/barbershops). It ships fully configured
 as a real, working reference client: **G's Famous Pizza (Guallpa's), 1522 Oak Tree Road,
 Iselin NJ** — a site that is actually deployed at https://joe-miz.com/gs-famous-pizza/.
 Your job when given a new pizzeria is to replace everything Guallpa-specific with the
@@ -37,6 +37,27 @@ notice a menu item they don't sell or a pie that isn't theirs.
 | `<head>` metas: title, description, og:*, theme-color | `index.html` | New client values (section 6) |
 | Google Fonts (Anton + Barlow) | `index.html` head + `styles.css` `--display/--body/--label` | KEEP unless the client's brand clearly calls for different type (section 8) |
 | Ember/glow gold hexes | `hero3d.js` | Only if the client theme isn't warm red/gold (section 7) |
+
+### Salon / barbershop variant (built for Rahway Barber Shop)
+The same engine runs a **service list + booking-request flow** instead of a menu + cart:
+- `menu` becomes the service list. `basePrice: null` renders "Price at the shop"; each
+  card button says "Book <service>" and jumps to the booking section with that service
+  pre-selected.
+- A `booking` config block drives the flow: `{ barbers: [...], slotMinutes, hours, daysAhead, confirmNote }`
+  where `hours` maps weekday 0-6 to `[open, close]` strings. script.js generates the day
+  strip and time slots from those real posted hours. A deterministic hash marks ~25% of
+  slots "taken" so the grid looks alive — this is DEMO availability; say so to the client,
+  and wiring real availability (or embedding their Booksy/Fresha) is the paid follow-up.
+- Submissions POST to the same FormSubmit relay as booking requests: set `order.requestPrefix`
+  (e.g. "RBS") and `order.inbox`. The shop actually receives the request email.
+- The order-section HTML is swapped for a booking-section (service/barber selects, day
+  strip, slot grid, name/phone/notes, summary line). The cart/dialog/checkout code in
+  script.js is replaced by the booking engine (`renderDays`/`renderSlots`/submit handler).
+- Empty `brand.logoLockup` -> the hero logo img removes itself (fillSlots drops empty IMG
+  slots). Use this for clients with only a square logo, no wide lockup.
+- Reviews, gallery, proof, visit, ticker, 3D stage all work identically to the food build.
+- Tests: swap the cart assertions for booking-flow ones (pick a day chip, an enabled slot,
+  submit, assert the request confirmation) — still fully config-driven.
 
 Pizza-specific copy baked into the template (fine for any pizzeria, edit if the client
 isn't a pizzeria): cart empty state "Your cart is ready for its first pie", checkout
