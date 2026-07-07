@@ -14,6 +14,63 @@ footprint. If you can't verify something, leave it out. A wrong photo is worse t
 no photo. This is a sales demo shown to the business owner — they will instantly
 notice a menu item they don't sell or a pie that isn't theirs.
 
+
+---
+
+## 0. The point: design FOR the business, not from a template
+
+This repo is an **engine**, not a look. The reusable part is the plumbing —
+config-driven `data-slot` rendering, the order/booking flow, the FormSubmit relay,
+the three.js stage, the Playwright harness, the Pages deploy pipeline. The **design is
+bespoke every single time.** A finished site should be impossible to mistake for
+another client's. If two builds look like the same template recolored, you did it wrong.
+
+Derive every design decision from the business's own world — the materials you can see
+in its photos, the lettering on its sign, the object that means "this trade":
+
+- **Palette — sample it, don't pick it.** Run the client's real photos (storefront,
+  interior, logo) through a color quantizer and pull 5–6 hexes. Guallpa's gave maroon +
+  gold off their sign; Rahway Barber Shop gave oxblood leather + chrome + oak floor +
+  bone walls. Put the sampled palette straight into `styles.css :root`. Never reach for
+  a default red/black/gold.
+  ```python
+  from PIL import Image; from collections import Counter
+  im = Image.open(p).convert('RGB').resize((120,120)).quantize(colors=6, method=Image.FASTOCTREE).convert('RGB')
+  for (r,g,b),n in Counter(im.getdata()).most_common(6): print(f'#{r:02x}{g:02x}{b:02x}', n)
+  ```
+- **Type — fit the trade.** Match the display face to the client's own signage
+  tradition, not a house font. Pizza sign lettering → Anton (fat poster). Barbershop
+  enamel/industrial signage → Big Shoulders Display. Old-world script logo → a fatface
+  or a warm serif. Pair with a body face and, where it fits, a utility face that *means*
+  something (Space Mono for a barbershop's appointment times reads like a ticket stub).
+- **Signature — the object that means "this trade."** The one memorable, crafted moment.
+  Build it in three.js when the trade has an iconic object: a barbershop has the
+  **rotating barber pole** (helical stripes, chrome caps); a pizzeria leaned on its promo
+  poster on a tilted plane; a taqueria might spin a neon sign, a bakery a cake stand.
+  Ask "what 3D object is unmistakably *this business*?" and build that. If nothing fits,
+  a restrained motion moment beats a generic one.
+- **Structure — how does this business actually present itself?** Don't force every
+  client into photo cards. A barbershop letters its services on a mirror **price-board**
+  with dotted leaders — so that's a board, not cards. A pizzeria's menu is photo-driven,
+  so cards fit. Booking for a shop that runs on appointments reads like a **ticket**;
+  ordering for a kitchen reads like a **cart**. Let the real-world artifact drive the
+  component.
+- **Copy — their voice.** Headline and ticker come from their own window vinyl, sign,
+  and standing deals (section 2e). Never write a tagline you could paste onto any client.
+
+**Two reference builds, two identities, one engine:**
+| | Guallpa's (pizza) | Rahway Barber Shop |
+|---|---|---|
+| Palette (sampled) | maroon + gold off the sign | oxblood + chrome + oak + bone |
+| Display type | Anton (fat poster) | Big Shoulders Display (industrial) |
+| Signature 3D | promo poster on a tilted plane | rotating chrome barber pole |
+| Menu structure | photo cards + cart | price-board + booking ticket |
+| Live | joe-miz.com/gs-famous-pizza/ | joe-miz.com/rahway-barbershop/ |
+
+They share zero visual DNA and all the plumbing. That's the target. The rest of this
+file documents the plumbing and the research techniques — treat the specific palettes,
+fonts, and layouts named below as **examples of the method**, not values to copy.
+
 ---
 
 ## 1. What is template vs. what is Guallpa's
